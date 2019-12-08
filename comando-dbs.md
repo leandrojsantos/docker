@@ -28,7 +28,7 @@ login interface do pg
     servidor: postgres
     usuario: user
     senha: root
-    base de dados: test1
+    base de dados: teste1
 
 **************************************************************************************************
 
