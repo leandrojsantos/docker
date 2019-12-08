@@ -1,4 +1,6 @@
-/**O que sao containers ?**/
+O que sao containers ?
+
+***********************
 
 Os containers sao um metodo de virtualizacao em nivel de sistema operacional que permite executar uma aplicacao e suas dependencias em processos com recursos isolados.
 

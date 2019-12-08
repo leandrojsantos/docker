@@ -7,6 +7,8 @@ O Docker permite que vc implante aplicoes rapidamente, de modo confiavel e estav
 
 Esse modelo de virtualizacao esta no nivel de sistema operacional, ou seja, ao contario das maquinas virtual padroes Docker usa container que nao tem visao de maquina intera, ele e apenas um processo em execusao em um kernel compartilhado entre todos os outros containers, ele utiliza o namespace para prover o devido isolamento de memoria RAM, processamento, disco e acesso a rede, mesmo compartilhamento o mesmo kernel, esse processo em execucao tem a visao de estar usando um sistema operacional dedicado.
 
+*********************************************
+
 *Sites e fontes
 
 https://docs.docker.com/install/linux/docker-ce/ubuntu/

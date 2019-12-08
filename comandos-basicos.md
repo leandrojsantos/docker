@@ -1,121 +1,119 @@
-/***Docker***/
+*****COMANDOS BASICOS DOCKER
 
-/*****COMANDOS BASICOS DOCKER**/
+***IMAGEM
 
-/*****IMAGEM**/
-
-/**nao usar sudo**/
+nao usar sudo
 
     sudo usermod -aG docker $(whoami)
 
-/**procura uma imagem**/
+procura uma imagem
 
     docker search nome_da_img
 
-/**baixa imagem na ultima versao**/
+baixa imagem na ultima versao
 
     docker pull nome_da_img
 
-/**excuta a imagem**/
+excuta a imagem
 
     docker run nome_da_img
 
-/**baixa imagem de versao expefica**/
+baixa imagem de versao expefica
 
     docker pull nome_da_img:nome_ou_numero_da_ver
 
-/**linkar imagens, por ex postgres necessita do pgadmin**/
+linkar imagens, por ex postgres necessita do pgadmin
 
     docker run --link postgres:pgadmin
 
-/**lista imagens**/
+lista imagens
 
     docker images
 
-/**lista imagens rodando**/
+lista imagens rodando
 
     docker ps -a
 
-/**para todas imagens**/
+para todas imagens
 
     $(docker ps -qa)
 
-/**para excluir a imagem**/
+para excluir a imagem
 
     docker rmi id_da_img
 
-/**apaga todas imagens**/
+apaga todas imagens
 
     docker rmi $(docker ps -qa)
 
-/**entra na imagem**/
+entra na imagem
 
     docker exec -it nome_da_imagem 
 
-/**sai dessa imagem**/
+sai dessa imagem
 
     exit
 
-/**************************************************************************************************/
+*************************************************************************************************
 
-/*****CONTAINER**/
+***CONTAINER
 
-/**cria container**/
+cria container
 
     docker run nome_da_imagem
 
-/**cria container nome e porta, para ex redis**/
+cria container nome e porta, para ex redis
 
     docker run -d -p 6379:6379 --name redisnovo redis
 
-/**cria um nome para container**/
+cria um nome para container
 
     docker run --name nome_escolhido nome_da_imagem
 
-/**Informações de uso de Hardware do container**/
+Informações de uso de Hardware do container
 
     docker stats id_ou_nome
     docker inspect id_ou_apelido
 
-/**Mapeando uma porta para o container, sempre usar portas padroes dos programas mas vc pode alterar. Estamos informando que a porta 8080 no Host é aberta e deve ser mapeada na porta 80 do container**/
+Mapeando uma porta para o container, sempre usar portas padroes dos programas mas vc pode alterar. Estamos informando que a porta 8080 no Host é aberta e deve ser mapeada na porta 80 do container
 
     docker run -it -p 8080:80 nome_da_imagem
 
-/**inicia o container**/
+inicia o container
 
     docker start id_ou_nome
 
-/**para o container**/
+para o container
 
     docker stop id_ou_nome
 
-/**entra no container**/
+entra no container
 
     docker exec -it nome_do_container 
 
-/**entra no container e executa comando**/
+entra no container e executa comando
 
     docker exec -it id_ou_nome comando_para_executar
 
-/**sai do container**/
+sai do container
 
     exit
 
-/**para excluir o container**/
+para excluir o container
 
     docker rm id_ou_nome
 
-/**apaga todos os containers**/
+apaga todos os containers
 
     docker rm $(docker ps -qa)
 
-/**apaga todos os containers**/
+apaga todos os containers
 
     docker rm $(docker ps -qa)
 
-/**************************************************************************************************/
+**********************************************************************************************
 
-/*****OUTROS COMANDOS**/
+***OUTROS COMANDOS
 
 *Segue a lista de comandos docker e sua utilidade
 
@@ -213,4 +211,4 @@ docker volume  – Gerenciamento dos volumes no Docker.
 
 docker wait    – Aguarda o retorno da execução de um container para iniciar esse container.
 
-/**************************************************************************************************/
+**********************************************************************************************

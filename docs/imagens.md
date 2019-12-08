@@ -1,4 +1,6 @@
-/**O sao as imagens ?**/
+O sao as imagens ?
+
+**************************
 
 Sao templates para criacao de containers, sao tambem imutaveis, para executa-las e necessario cria uma instancia dela no caso docker e um container.
 

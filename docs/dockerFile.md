@@ -1,4 +1,6 @@
-/**Para que e ?**/
+Docker-file para que e ?
+
+**************************
 
 Docker pode construir imagens automaticamente lendo as instruções do arquivo Dockerfile. O
 Dockerfile é um arquivo de texto que contém todos os comandos necessários para se criar uma
@@ -12,7 +14,7 @@ instruções serem MAIÚSCULAS para distinguir dos argumentos mais facilmente.
 O Docker executa as instruções do Dockerfile em ordem. A primeira instrução deve ser “FROM” para
 especificar a Imagem Base da qual você está construindo no formato pedido.
 
-/**Exemplo de arquivo dockfile**/
+Exemplo de arquivo dockfile
 
     FROM node:alpine
     WORKDIR /usr/app

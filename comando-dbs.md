@@ -1,8 +1,8 @@
-/*****COMANDOS BASICOS DOCKER PARA DATABASES**/
+*****COMANDOS BASICOS DOCKER PARA DATABASES
 
-/*****POSTGRESQL**/
+***POSTGRESQL
 
-/**cria image do postgres**/
+cria image do postgres
 
         docker run \
         --name postgres \
@@ -13,7 +13,7 @@
         -d \
         postgres:11.5
 
-/**cria interface do pg**/
+cria interface do pg
 
         docker run \
         --name adminer \
@@ -22,7 +22,7 @@
         -d \
         adminer
 
-/**login interface do pg**/
+login interface do pg
 
     sistema: PostgreSQL
     servidor: postgres
@@ -30,11 +30,11 @@
     senha: root
     base de dados: test1
 
-/**************************************************************************************************/
+**************************************************************************************************
 
-/*****MONGODB**/
+***MONGODB
 
-/**cria imagem do mongo**/
+cria imagem do mongo
 
         docker run \
         --name mongodb \
@@ -44,7 +44,7 @@
         -d \
         mongo:4
 
-/**cria interface do mongo com usario root**/
+cria interface do mongo com usario root
 
         docker run \
         --name mongoclient \
@@ -53,7 +53,7 @@
         -d \
         mongoclient/mongoclient
 
-/**cria interface mongo com usario inicial sendo atraves dele e permissao cria outros -u nome_usuario -p senha_do_usuario**/
+cria interface mongo com usario inicial sendo atraves dele e permissao cria outros -u nome_usuario -p senha_do_usuario
 
         docker exec -it mongodb \
         mongo --host localhost -u admin -p root \
@@ -62,9 +62,9 @@
         .createUser({user:'user', pwd:'root',\
         roles: [{role: 'readWrite', db: 'teste2'}]})"
 
-/*****login na interface mongodb**/
+***login na interface mongodb
 
-/**1 login user root/**
+1 login user root
 
 mongoDB
 
@@ -80,7 +80,7 @@ mongoDB
     password: root
     authentication db: admin
 
-/**2 login user**/
+2 login user
 
 mongodb-readWhite 
 
@@ -97,25 +97,25 @@ mongodb-readWhite
     authentication db: teste2
 
 
-/*************************************************************************************************/
+*************************************************************************************************
 
-/*****REDIS**/
+***REDIS
 
-/**imagem**/
+imagem
 
     docker pull redis
 
-/**seta nome e prta a imagem**/
+seta nome e porta a imagem
 
     docker run -d -p 6379:6379 --name redis redis 
 
-/**iniciar redis-cli**/
+iniciar redis-cli
 
     docker exec -it redis sh
 
     #redis-cli
 
-/**teste se esta ok**/
+teste se esta ok
 
     127.0.0.1:6379> ping
 
