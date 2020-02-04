@@ -9,17 +9,18 @@ Esse modelo de virtualizacao esta no nivel de sistema operacional, ou seja, ao c
 
 *********************************************
 
-*Sites e fontes
 
-https://docs.docker.com/install/linux/docker-ce/ubuntu/
+>Sites e fontes
 
-https://markheath.net/post/exploring-redis-with-docker
+* https://docs.docker.com/install/linux/docker-ce/ubuntu/
 
-https://woliveiras.com.br/posts/comandos-mais-utilizados-no-docker/
+* https://markheath.net/post/exploring-redis-with-docker
 
-https://stack.desenvolvedor.expert/appendix/docker/comandos.html
+* https://woliveiras.com.br/posts/comandos-mais-utilizados-no-docker/
 
-https://pt.slideshare.net/AndrJusti/apresentao-docker-73035181
+* https://stack.desenvolvedor.expert/appendix/docker/comandos.html
+
+* https://pt.slideshare.net/AndrJusti/apresentao-docker-73035181
 
 
 

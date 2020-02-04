@@ -10,3 +10,4 @@ app.get('/', (req,res) => {
 });
 
 app.listen(PORT,HOST);
+console.log('docker OK http://localhost:3000/');

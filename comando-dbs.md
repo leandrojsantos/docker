@@ -1,121 +1,119 @@
-*****COMANDOS BASICOS DOCKER PARA DATABASES
+# Comandos Docker para criar Databases : 
+----------------------
+# POSTGRESQL
 
-***POSTGRESQL
+>cria image do postgres
 
-cria image do postgres
+    docker run \
+    --name postgres \
+    -e POSTGRES_USER=admin \
+    -e POSTGRES_PASSWORD=root \
+    -e POSTGRES_DB=mdb \
+    -p 5432:5432 \
+    -d \
+    postgres:11.5
 
-        docker run \
-        --name postgres \
-        -e POSTGRES_USER=user \
-        -e POSTGRES_PASSWORD=root \
-        -e POSTGRES_DB=teste1 \
-        -p 5432:5432 \
-        -d \
-        postgres:11.5
+>cria interface do pg
 
-cria interface do pg
+    docker run \
+    --name adminer \
+    -p 8080:8080 \
+    --link postgres:postgres \
+    -d \
+    adminer
 
-        docker run \
-        --name adminer \
-        -p 8080:8080 \
-        --link postgres:postgres \
-        -d \
-        adminer
-
-login interface do pg
+>login interface do pg
 
     sistema: PostgreSQL
     servidor: postgres
-    usuario: user
+    usuario: admin
     senha: root
-    base de dados: teste1
+    base de dados: mdb
 
-**************************************************************************************************
+-------------------------
+# MONGODB
 
-***MONGODB
+>cria imagem do mongo
 
-cria imagem do mongo
+    docker run \
+    --name mongodb \
+    -p 27017:27017 \
+    -e MONGO_INITDB_ROOT_USERNAME=admin \
+    -e MONGO_INITDB_ROOT_PASSWORD=root \
+    -d \
+    mongo:4
 
-        docker run \
-        --name mongodb \
-        -p 27017:27017 \
-        -e MONGO_INITDB_ROOT_USERNAME=admin \
-        -e MONGO_INITDB_ROOT_PASSWORD=root \
-        -d \
-        mongo:4
+>cria interface do mongo com usario root
 
-cria interface do mongo com usario root
+    docker run \
+    --name mongoclient \
+    -p 3000:3000 \
+    --link mongodb:mongodb \
+    -d \
+    mongoclient/mongoclient
 
-        docker run \
-        --name mongoclient \
-        -p 3000:3000 \
-        --link mongodb:mongodb \
-        -d \
-        mongoclient/mongoclient
+>cria interface mongo com usario inicial sendo atraves dele e permissao cria outros -u nome_usuario -p senha_do_usuario
 
-cria interface mongo com usario inicial sendo atraves dele e permissao cria outros -u nome_usuario -p senha_do_usuario
+    docker exec -it mongodb \
+    mongo --host localhost -u admin -p root \
+    --authenticationDatabase admin \
+    --eval "db.getSiblingDB('mdb') \
+    .createUser({user:'user', pwd:'root',\
+    roles: [{role: 'readWrite', db: 'mdb'}]})"
 
-        docker exec -it mongodb \
-        mongo --host localhost -u admin -p root \
-        --authenticationDatabase admin \
-        --eval "db.getSiblingDB('teste2') \
-        .createUser({user:'user', pwd:'root',\
-        roles: [{role: 'readWrite', db: 'teste2'}]})"
+login na interface mongodb:
 
-***login na interface mongodb
-
-1 login user root
+>Primeiro login no mongoDB  - admin root
 
 mongoDB
 
-*aba.: connection
+* aba.: connection
 
     host/port: mongoDB 27017
     database name: admin
 
-*aba.: authentication
+* aba.: authentication
 
     authentication type: scram-sha1
     username: admin
     password: root
     authentication db: admin
 
-2 login user
+>Segundo login no mongodb - user root
 
 mongodb-readWhite 
 
-*aba.: connection
+* aba.: connection
 
     host/port: mongodb 27017
-    database name: teste2
+    database name: mdb
 
-*aba.: authentication
+* aba.: authentication
 
     authentication type: scram-sha1
     username: user
     password: root
-    authentication db: teste2
+    authentication db: mdb
 
+* Ou seja o primeiro login e para entra no mongodb e o segundo entra o bancos (collections) que existem no mongo
 
-*************************************************************************************************
+----------------
+# REDIS
 
-***REDIS
-
-imagem
+>imagem
 
     docker pull redis
 
-seta nome e porta a imagem
+>seta nome e porta a imagem
 
     docker run -d -p 6379:6379 --name redis redis 
 
-iniciar redis-cli
+>iniciar redis-cli
 
     docker exec -it redis sh
 
     #redis-cli
 
-teste se esta ok
+>teste se esta ok
 
     127.0.0.1:6379> ping
-
