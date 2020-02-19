@@ -6,7 +6,7 @@ const HOST = '0.0.0.0';
 const app = express();
 
 app.get('/', (req,res) => {
-    res.send('TESTE => docker, dockerfile, docker-compose e dockerignore');
+    res.send('TESTE => docker + node , dockerfile, docker-compose');
 });
 
 app.listen(PORT,HOST);
