@@ -1,6 +1,5 @@
 # Comandos Docker :
 -------------------------
-
 # IMAGEM
 
 >nao usar sudo
@@ -79,9 +78,13 @@ __________________
 
     docker start id_ou_nome
 
->para o container
+>para o container 
 
     docker stop id_ou_nome
+
+>stop tds containers
+
+    docker container stop $(docker container ls -a -q)
 
 >entra no container
 
@@ -109,6 +112,9 @@ _______________________
 
     docker --help
 
+>Excluir images,container,volumes
+
+    docker system prune --all --force --volumes
 
 >Segue a lista de comando docker e sua utilidade
 
