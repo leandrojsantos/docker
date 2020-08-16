@@ -4,5 +4,4 @@ O Docker e uma tecnologia open source que permite criar, testar e implantar apli
 
 >Para iniciar o projeto
 
-    npm i
-    npm start
+docker-compose up
