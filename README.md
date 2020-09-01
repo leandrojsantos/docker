@@ -4,7 +4,7 @@ Dedicado a projetos treino e testes sobre docker
  
 ### Docker
 
-O Docker e uma tecnologia open source que permite criar, testar e implantar aplicacoes distibuidas dentro de containers de software. 
+O [docker](https://docs.docker.com/get-docker/) e uma tecnologia open source que permite criar, testar e implantar aplicacoes distibuidas dentro de containers de software. 
 
 Ele permite que vc empacote um software de uma padronizada para o desenvolvimento de software, contendo tudo que e necessario para a execucao: codigo, runtime, ferramentas, bibliotecas, etc...
 O Docker permite que vc implante aplicoes rapidamente, de modo confiavel e estavel, em qualquer ambiente.
@@ -16,7 +16,7 @@ Esse modelo de virtualizacao esta no nivel de sistema operacional, ou seja, ao c
  
 ## ⚙️ Funcionalidades
  
-   A principal funcionalidade deste repositório e para estudos, documentação e projeto simples sobre docker
+   A principal funcionalidade deste repositório e para estudos, documentação e projeto simples sobre [docker](https://docs.docker.com/get-docker/)
 
 
 ---
@@ -26,20 +26,4 @@ Esse modelo de virtualizacao esta no nivel de sistema operacional, ou seja, ao c
 ### Pré-requisitos
 
 Deve ter instalado em sua máquina a seguinte ferramenta:
-[docker](https://docs.docker.com/get-docker/)
-
->Sites e fontes
-
-* https://docs.docker.com/install/linux/docker-ce/ubuntu/
-
-* https://markheath.net/post/exploring-redis-with-docker
-
-* https://woliveiras.com.br/posts/comandos-mais-utilizados-no-docker/
-
-* https://stack.desenvolvedor.expert/appendix/docker/comandos.html
-
-* https://pt.slideshare.net/AndrJusti/apresentao-docker-73035181
-
-
-
-
+- [docker](https://docs.docker.com/get-docker/)
