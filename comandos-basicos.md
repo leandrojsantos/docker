@@ -1,211 +1,155 @@
-# Comandos Docker :
+## Comandos Docker :
 -------------------------
-# IMAGEM
+### IMAGEM
+```bash
+$ sudo usermod -aG docker $(whoami) # nao usar sudo
 
->nao usar sudo
+$ docker search nome_da_img # procura uma imagem
 
-    sudo usermod -aG docker $(whoami)
+$ docker pull nome_da_img # baixa imagem na ultima versao
 
->procura uma imagem
+$ docker pull nome_da_img:nome_ou_numero_da_ver # baixa imagem de versao expefica
 
-    docker search nome_da_img
+$ docker run nome_da_img # excuta a imagem
 
->baixa imagem na ultima versao
+$ docker run --link postgres:pgadmin # linkar imagens, por ex postgres necessita do pgadmin
 
-    docker pull nome_da_img
+$ docker images # lista imagens
 
->excuta a imagem
+$ docker ps -a # lista imagens rodando
 
-    docker run nome_da_img
+$ (docker ps -qa) # para todas imagens
 
->baixa imagem de versao expefica
+$ docker rmi id_da_img # para excluir a imagem
 
-    docker pull nome_da_img:nome_ou_numero_da_ver
+$ docker exec -it nome_da_imagem # entra na imagem 
 
->linkar imagens, por ex postgres necessita do pgadmin
-
-    docker run --link postgres:pgadmin
-
->lista imagens
-
-    docker images
-
->lista imagens rodando
-
-    docker ps -a
-
->para todas imagens
-
-    $(docker ps -qa)
-
->para excluir a imagem
-
-    docker rmi id_da_img
-
->entra na imagem
-
-    docker exec -it nome_da_imagem 
-
->sai dessa imagem
-
-    exit
+$ exit # sai dessa imagem
+```
 __________________
 
-# CONTAINER
+### CONTAINER
+```bash
+$ docker run nome_da_imagem # cria container
 
->cria container
+$ docker run -d -p 6379:6379 --name redisnovo redis # cria container nome e porta, para ex redis
 
-    docker run nome_da_imagem
+$ docker run --name nome_escolhido nome_da_imagem # cria um nome para container
 
->cria container nome e porta, para ex redis
+$ docker stats id_ou_nome # Informações de uso de Hardware do container
 
-    docker run -d -p 6379:6379 --name redisnovo redis
+$ docker inspect id_ou_apelido # Informações de uso de Hardware do container
 
->cria um nome para container
+$ docker run -it -p 8080:80 nome_da_imagem # Mapeando uma porta para o container, sempre usar portas padroes dos programas mas vc pode alterar. Estamos informando que a porta 8080 no Host é aberta e deve ser mapeada na porta 80 do container
 
-    docker run --name nome_escolhido nome_da_imagem
+$ docker start id_ou_nome # start container
 
->Informações de uso de Hardware do container
+$ docker-compose up -d # start container in compose mode in file
 
-    docker stats id_ou_nome
-    docker inspect id_ou_apelido
+$ docker stop id_ou_nome # stop container 
 
->Mapeando uma porta para o container, sempre usar portas padroes dos programas mas vc pode alterar. Estamos informando que a porta 8080 no Host é aberta e deve ser mapeada na porta 80 do container
+$ docker container stop $(docker container ls -a -q) # stop all containers
 
-    docker run -it -p 8080:80 nome_da_imagem
+$ docker exec -it nome_do_container # entra no container
 
->inicia o container
+$ docker exec -it id_ou_nome comando_para_executar # entra no container e executa comando
 
-    docker start id_ou_nome
+$ exit # sai do container
 
->para o container 
+$ docker rm id_ou_nome # del container
 
-    docker stop id_ou_nome
+$ docker rm $(docker ps -qa) # del all containers
 
->stop tds containers
-
-    docker container stop $(docker container ls -a -q)
-
->entra no container
-
-    docker exec -it nome_do_container 
-
->entra no container e executa comando
-
-    docker exec -it id_ou_nome comando_para_executar
-
->sai do container
-
-    exit
-
->para excluir o container
-
-    docker rm id_ou_nome
-
->apaga todos os containers
-
-    docker rm $(docker ps -qa)
-
+$ docker system prune --all --force --volumes # Excluir images,container,volumes ou tudo
+```
 _______________________
 
-# OUTROS COMANDOS
+### OUTROS COMANDOS
+```bash
+$ docker --help # infos de help
 
-    docker --help
+$ docker attach # Acessar dentro do container e trabalhar a partir dele.
 
->Excluir images,container,volumes
+$ docker build # A partir de instruções de um arquivo Dockerfile eu possa criar uma imagem.
 
-    docker system prune --all --force --volumes
+$ docker commit # Cria uma imagem a partir de um container.
 
->Segue a lista de comando docker e sua utilidade
+$ docker cp # Copia arquivos ou diretórios do container para o host.
 
-docker attach – Acessar dentro do container e trabalhar a partir dele.
+$ docker create # Cria um novo container.
 
-docker build – A partir de instruções de um arquivo Dockerfile eu possa criar uma imagem.
+$ docker diff # Exibe as alterações feitas no filesystem do container.
 
-docker commit – Cria uma imagem a partir de um container.
+$ docker events # Exibe os eventos do container em tempo real.
 
-docker cp – Copia arquivos ou diretórios do container para o host.
+$ docker exec # Executa uma instrução dentro do container que está rodando sem precisar atachar nele.
 
-docker create – Cria um novo container.
+$ docker export # Exporta um container para um arquivo .tar.
 
-docker diff – Exibe as alterações feitas no filesystem do container.
+$ docker history # Exibe o histórico de comandos que foram executados dentro do container.
 
-docker events – Exibe os eventos do container em tempo real.
+$ docker images # Lista as imagens disponíveis no host.
 
-docker exec – Executa uma instrução dentro do container que está rodando sem precisar atachar nele.
+$ docker import # Importa uma imagem .tar para o host.
 
-docker export – Exporta um container para um arquivo .tar.
+$ docker info # Exibe as informações sobre o host.
 
-docker history – Exibe o histórico de comandos que foram executados dentro do container.
+$ docker kill # Da Poweroff no container.
 
-docker images – Lista as imagens disponíveis no host.
+$ docker load # Carrega a imagem de um arquivo .tar.
 
-docker import – Importa uma imagem .tar para o host.
+$ docker login # Registra ou faz o login em um servidor de registry.
 
-docker info – Exibe as informações sobre o host.
+$ docker logout # Faz o logout de um servidor de registry.
 
-docker inspect – Exibe r o json com todas as configurações do container.
+$ docker logs # Exibe os logs de um container.
 
-docker kill – Da Poweroff no container.
+$ docker port # Abre uma porta do host e do container.
 
-docker load – Carrega a imagem de um arquivo .tar.
+$ docker network # Gerenciamento das redes do docker.
 
-docker login – Registra ou faz o login em um servidor de registry.
+$ docker node # Gerenciamento dos nodes do docker Swarm.
 
-docker logout – Faz o logout de um servidor de registry.
+$ docker pause # Pausa o container.
 
-docker logs – Exibe os logs de um container.
+$ docker port # Lista as portas mapeadas de um container.
 
-docker port – Abre uma porta do host e do container.
+$ docker ps # Lista todos os containers.
 
-docker network – Gerenciamento das redes do Docker.
+$ docker pull # Faz o pull de uma imagem a partir de um servidor de registry.
 
-docker node – Gerenciamento dos nodes do Docker Swarm.
+$ docker push # Faz o push de uma imagem a partir de um servidor de registry.
 
-docker pause – Pausa o container.
+$ docker rename # Renomeia um container existente.
 
-docker port – Lista as portas mapeadas de um container.
+$ docker restart # Restarta um container que está rodando ou parado.
 
-docker ps – Lista todos os containers.
+$ docker rm # Remove um ou mais containeres.
 
-docker pull – Faz o pull de uma imagem a partir de um servidor de registry.
+$ docker rmi # Remove uma ou mais imagens.
 
-docker push – Faz o push de uma imagem a partir de um servidor de registry.
+$ docker run # Executa um comando em um novo container.
 
-docker rename – Renomeia um container existente.
+$ docker save # Salva a imagem em um arquivo .tar.
 
-docker restart – Restarta um container que está rodando ou parado.
+$ docker search # Procura por uma imagem no docker Hub.
 
-docker rm – Remove um ou mais containeres.
+$ docker service # Gernciamento dos serviços do docker.
 
-docker rmi – Remove uma ou mais imagens.
+$ docker swarm # Clusterização das aplicações em uma orquestração de várias containers, aplicações junto.
 
-docker run – Executa um comando em um novo container.
+$ docker tag # Coloca tag em uma imagem para o repositorio.
 
-docker save – Salva a imagem em um arquivo .tar.
+$ docker top # Exibe os processos rodando em um container.
 
-docker search – Procura por uma imagem no Docker Hub.
+$ docker unpause # Inicia um container que está em pause.
 
-docker service – Gernciamento dos serviços do Docker.
+$ docker update # Atualiza a configuração de um ou mais containers.
 
-docker start – Inicia um container que esteja parado.
+$ docker version # Exibe as versões de API, Client e Server do host.
 
-docker stats – Exibe informações de uso de CPU, memória e rede.
+$ docker volume # Gerenciamento dos volumes no docker.
 
-docker stop – Para um container que esteja rodando.
+$ docker wait # Aguarda o retorno da execução de um container para iniciar esse container.
 
-docker swarm – Clusterização das aplicações em uma orquestração de várias containers, aplicações junto.
-
-docker tag – Coloca tag em uma imagem para o repositorio.
-
-docker top – Exibe os processos rodando em um container.
-
-docker unpause – Inicia um container que está em pause.
-
-docker update – Atualiza a configuração de um ou mais containers.
-
-docker version – Exibe as versões de API, Client e Server do host.
-
-docker volume – Gerenciamento dos volumes no Docker.
-
-docker wait – Aguarda o retorno da execução de um container para iniciar esse container.
+```

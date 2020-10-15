@@ -1,10 +1,10 @@
-# Comandos Docker para criar Databases : 
+## Comandos Docker para criar Databases : 
 ----------------------
-# POSTGRESQL
+### POSTGRESQL
+```bash
+# cria image do postgres
 
->cria image do postgres
-
-    docker run \
+    $ docker run \
     --name postgres \
     -e POSTGRES_USER=admin \
     -e POSTGRES_PASSWORD=root \
@@ -12,17 +12,18 @@
     -p 5432:5432 \
     -d \
     postgres:11.5
+```
+```bash
+# cria interface do pg
 
->cria interface do pg
-
-    docker run \
+    $ docker run \
     --name adminer \
     -p 8080:8080 \
     --link postgres:postgres \
     -d \
     adminer
-
->login interface do pg
+```
+#### login interface do pg
 
     sistema: PostgreSQL
     servidor: postgres
@@ -31,89 +32,95 @@
     base de dados: mdb
 
 -------------------------
-# MONGODB
+### MONGODB
+```bash
+# cria imagem do mongo
 
->cria imagem do mongo
-
-    docker run \
+    $ docker run \
     --name mongodb \
     -p 27017:27017 \
     -e MONGO_INITDB_ROOT_USERNAME=admin \
     -e MONGO_INITDB_ROOT_PASSWORD=root \
     -d \
     mongo:4
+```
+```bash
+# cria interface do mongo com usario root
 
->cria interface do mongo com usario root
-
-    docker run \
+    $ docker run \
     --name mongoclient \
     -p 3000:3000 \
     --link mongodb:mongodb \
     -d \
     mongoclient/mongoclient
+```
+```bash
+# cria interface mongo com usario inicial sendo atraves dele e permissao cria outros -u nome_usuario -p senha_do_usuario
 
->cria interface mongo com usario inicial sendo atraves dele e permissao cria outros -u nome_usuario -p senha_do_usuario
-
-    docker exec -it mongodb \
+    $ docker exec -it mongodb \
     mongo --host localhost -u admin -p root \
     --authenticationDatabase admin \
     --eval "db.getSiblingDB('mdb') \
     .createUser({user:'user', pwd:'root',\
     roles: [{role: 'readWrite', db: 'mdb'}]})"
 
-login na interface mongodb:
+```
 
->Primeiro login no mongoDB  - admin root
+#### login na interface mongodb:
+#### * Primeiro login no mongoDB  - admin root
 
-mongoDB
+### `mongoDB`
 
-* aba.: connection
+#### aba.: connection
 
     host/port: mongoDB 27017
     database name: admin
 
-* aba.: authentication
+#### aba.: authentication
 
     authentication type: scram-sha1
     username: admin
     password: root
     authentication db: admin
 
->Segundo login no mongodb - user root
+#### * Segundo login no mongodb - user root
 
-mongodb-readWhite 
+### `mongodb-readWhite` 
 
-* aba.: connection
+#### aba.: connection
 
     host/port: mongodb 27017
     database name: mdb
 
-* aba.: authentication
+#### aba.: authentication
 
     authentication type: scram-sha1
     username: user
     password: root
     authentication db: mdb
 
-* Ou seja o primeiro login e para entra no mongodb e o segundo entra o bancos (collections) que existem no mongo
+`Ou seja o primeiro login e para entra no mongodb e o segundo entra o bancos (collections) que existem no mongo `
 
 ----------------
-# REDIS
+### REDIS
+```bash
+#imagem
 
->imagem
+    $ docker pull redis
+```
+```bash
+# seta nome e porta a imagem
 
-    docker pull redis
+    $ docker run -d -p 6379:6379 --name redis redis
+```
+```bash
+# iniciar redis-cli
 
->seta nome e porta a imagem
+    $ docker exec -it redis sh
+    $ #redis-cli
+```
+```bash
+# teste se esta ok
 
-    docker run -d -p 6379:6379 --name redis redis 
-
->iniciar redis-cli
-
-    docker exec -it redis sh
-
-    #redis-cli
-
->teste se esta ok
-
-    127.0.0.1:6379> ping
+    $ 127.0.0.1:6379> ping
+```
