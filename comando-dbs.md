@@ -99,28 +99,21 @@
     password: root
     authentication db: mdb
 
-`Ou seja o primeiro login e para entra no mongodb e o segundo entra o bancos (collections) que existem no mongo `
+Ou seja o primeiro login e para entra no mongodb e o segundo entra o bancos (collections) que existem no mongo
 
 ----------------
 ### REDIS
 ```bash
-#imagem
-
-    $ docker pull redis
+    $ docker pull redis # cria imagem
 ```
 ```bash
-# seta nome e porta a imagem
+    $ docker run -d -p 6379:6379 --name redis redis # seta nome e porta a imagem
 
-    $ docker run -d -p 6379:6379 --name redis redis
 ```
 ```bash
-# iniciar redis-cli
 
-    $ docker exec -it redis sh
+    $ docker exec -it redis sh # iniciar redis-cli
+
     $ #redis-cli
-```
-```bash
-# teste se esta ok
-
-    $ 127.0.0.1:6379> ping
+    $ 127.0.0.1:6379> ping # teste se esta ok
 ```

@@ -10,7 +10,7 @@ Os containers podem ajudar a garantir rapidez, confiabilidade e consistencia de 
 
 Containers tem como base sempre uma imagem, pense como na seguinte analogia do mundo java, uma imagem e uma classe e um container e com um objeto instancia dessa classe, entao podemos atraves de uma imagem intanciar varios containers, tambem atraves de recursos chroot, Cgroups e possivel definirmos limitacoes de recursos e isolamento parcial ou total dos mesmos
 
-Algumas caracteristica sao:
+Algumas caracteristica são:
 
     1 portabiliadade de aplicacao
     2 isolamento de processo
