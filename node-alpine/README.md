@@ -1,5 +1,5 @@
 <h1 align="center">
-     <a href="#" alt="site do ecoleta">Imagem node-alpine</a>
+     <a href="#" alt="">Imagem node-alpine</a>
 </h1>
 
 <h4 align="center">

@@ -1,5 +1,5 @@
 <h1 align="center">
-     <a href="#" alt="site do ecoleta">Imagem php</a>
+     <a href="#" alt="">Imagem php</a>
 </h1>
 
 <h4 align="center">
@@ -77,6 +77,3 @@ As seguintes ferramentas foram usadas na construção do projeto:
 * [Docker](https://docs.docker.com/engine/install/ubuntu/)
 * [VSCode](https://code.visualstudio.com/)
 * [Chorme](https://www.google.pt/intl/pt-PT/chrome/?brand=CHBD&gclid=CjwKCAjw1ej5BRBhEiwAfHyh1CqpdiJkRowiF7qVChVWvkTImra14_fVqzdcxXeYoznuxbgYMmtS9BoCP4oQAvD_BwE&gclsrc=aw.ds)
-
-
-
