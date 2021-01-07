@@ -1,4 +1,4 @@
-## Comandos Docker para criar Databases :
+## Docker criando Databases :
 ----------------------
 ### POSTGRESQL
 ```bash
@@ -12,8 +12,7 @@
    -p 5432:5432 \
    -d \
    postgres:11.5
-```
-```bash
+
 # cria interface do pg
  
    $ docker run \
@@ -22,15 +21,15 @@
    --link postgres:postgres \
    -d \
    adminer
-```
-#### login interface do pg
+
+# login interface do adminer em localhost:8080
  
    sistema: PostgreSQL
    servidor: postgres
    usuário: admin
    senha: root
    base de dados: mdb
- 
+```
 -------------------------
 ### MONGODB
 ```bash
@@ -43,9 +42,8 @@
    -e MONGO_INITDB_ROOT_PASSWORD=root \
    -d \
    mongo:4
-```
-```bash
-# cria interface do mongo com usuário root
+
+# cria interface do mongoclient em localhost:3000 
  
    $ docker run \
    --name mongoclient \
@@ -53,9 +51,8 @@
    --link mongodb:mongodb \
    -d \
    mongoclient/mongoclient
-```
-```bash
-# cria interface mongo com usuário inicial sendo através dele e permissão cria outros -u nome_usuario -p senha_do_usuario
+
+# cria interface mongoclient com usuário inicial sendo através dele a permissão para cria outros -u nome_usuario -p senha_do_usuario
  
    $ docker exec -it mongodb \
    mongo --host localhost -u admin -p root \
@@ -66,54 +63,48 @@
  
 ```
  
-#### login na interface mongodb:
-#### * Primeiro login no mongoDB  - admin root
+### Login na interface mongoclient em localhost:3000:
+#### *** Primeiro login no mongoDB  - admin root
  
 ### `mongoDB`
  
 #### aba.: connection
  
-   host/port: mongoDB 27017
-   database name: admin
+   - host/port: mongoDB 27017
+   - database name: admin
  
 #### aba.: authentication
+   - authentication type: scram-sha1
+   - username: admin
+   - password: root
+   - authentication db: admin
  
-   authentication type: scram-sha1
-   username: admin
-   password: root
-   authentication db: admin
- 
-#### * Segundo login no mongodb - user root
+#### *** Segundo login no mongodb - user root
  
 ### `mongodb-readWhite`
  
 #### aba.: connection
  
-   host/port: mongodb 27017
-   database name: mdb
+   - host/port: mongodb 27017
+   - database name: mdb
  
 #### aba.: authentication
  
-   authentication type: scram-sha1
-   username: user
-   password: root
-   authentication db: mdb
+   - authentication type: scram-sha1
+   - username: user
+   - password: root
+   - authentication db: mdb
  
-Ou seja o primeiro login e para entrar no mongodb e o segundo entra o bancos (collections) que existem no mongo
+- Ou seja o primeiro login e para entrar no mongodb e o segundo entra o bancos (collections) que existem no mongo
  
 ----------------
 ### REDIS
 ```bash
    $ docker pull redis # cria imagem
-```
-```bash
+
    $ docker run -d -p 6379:6379 --name redis redis # seta nome e porta a imagem
- 
-```
-```bash
- 
+
    $ docker exec -it redis sh # iniciar redis-cli
- 
-   $ #redis-cli
+
    $ 127.0.0.1:6379> ping # teste se está ok
 ```
