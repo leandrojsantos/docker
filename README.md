@@ -9,6 +9,7 @@ Ele permite que você empacote um software de uma padronizada para o desenvolvim
 O Docker permite que você implante aplicações rapidamente, de modo confiável e estável, em qualquer ambiente.
  
 Esse modelo de virtualização está no nível de sistema operacional, ou seja, ao contrário das máquinas virtuais padrões Docker usa container que nao tem visao de máquina inteira, ele é apenas um processo em execução em um kernel compartilhado entre todos os outros containers, ele utiliza o namespace para prover o devido isolamento de memória RAM, processamento, disco e acesso a rede, mesmo compartilhamento o mesmo kernel, esse processo em execução tem a visão de estar usando um sistema operacional dedicado.
+
 ---
 ## ⚙️ Funcionalidades
   A principal funcionalidade deste repositório e para estudos, documentação e projeto simples sobre [docker](https://docs.docker.com/get-docker/)
